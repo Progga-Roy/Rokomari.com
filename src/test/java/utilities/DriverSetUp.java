@@ -4,41 +4,43 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 public class DriverSetUp {
-    public static final String browserName = System.getProperty("browser", "Chrome");
-    public static final ThreadLocal<WebDriver> DRIVER_THREAD_LOCAL = new ThreadLocal<>();
+    private static final String browser_name = System.getProperty("browser","Chrome");
+    private static final ThreadLocal<WebDriver>DRIVER_THREAD_LOCAL = new ThreadLocal<>();
 
-    public void setDriver(WebDriver driver) {
+    public static void setDriver(WebDriver driver){
         DriverSetUp.DRIVER_THREAD_LOCAL.set(driver);
     }
 
-    public WebDriver getDriver() {
+    public static WebDriver getDriver() {
         return DRIVER_THREAD_LOCAL.get();
     }
 
-    @BeforeSuite
-    public void startBrowser() {
-        WebDriver driver = getBrowser(browserName);
+    @BeforeMethod
+    public void startBrowser(){
+        WebDriver driver = getBrowser(browser_name);
         setDriver(driver);
     }
-
-    @AfterSuite
-    public void closeBrowser() {
-        getDriver().close();
+    @AfterMethod
+    public void closeBrowser(){
+        getDriver().quit();
     }
 
-    public WebDriver getBrowser(String name) {
-        if (name.equalsIgnoreCase("Chrome")) {
+    public WebDriver getBrowser(String name){
+        if (name.equalsIgnoreCase("Chrome")){
             return new ChromeDriver();
-        } else if (name.equalsIgnoreCase("firefox")) {
+        }else if (name.equalsIgnoreCase("firefox")){
             return new FirefoxDriver();
-        } else if (name.equalsIgnoreCase("Edge")) {
+        }else if (name.equalsIgnoreCase("Edge")){
             return new EdgeDriver();
-        } else {
-            throw new RuntimeException("Browser is not available in this : " + name);
+        }
+        else{
+            throw new RuntimeException("Browser is not available at this :" + name);
         }
     }
 }
