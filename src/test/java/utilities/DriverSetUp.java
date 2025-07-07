@@ -2,6 +2,7 @@ package utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
@@ -33,7 +34,10 @@ public class DriverSetUp {
 
     public WebDriver getBrowser(String name){
         if (name.equalsIgnoreCase("Chrome")){
-            return new ChromeDriver();
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.setBinary("C:\\Users\\HP\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe");
+            chromeOptions.addArguments("user-data-dir=C:\\Users\\HP\\AppData\\Local\\Google\\Chrome for Testing\\User Data");
+            return new ChromeDriver(chromeOptions);
         }else if (name.equalsIgnoreCase("firefox")){
             return new FirefoxDriver();
         }else if (name.equalsIgnoreCase("Edge")){

@@ -34,4 +34,7 @@ public class BasePage{
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+    public void writeOnElement(By locator ,String text){
+        getElement(locator).sendKeys(text);
+    }
 }
