@@ -37,4 +37,7 @@ public class BasePage{
     public void writeOnElement(By locator ,String text){
         getElement(locator).sendKeys(text);
     }
+    public String getElementByText( By locator){
+        return getElement(locator).getText();
+    }
 }
