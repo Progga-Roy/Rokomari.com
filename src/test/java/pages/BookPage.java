@@ -21,6 +21,10 @@ public By authorsTab = By.xpath("//a[contains(text(),'লেখক')]");
 public By authorSection = By.xpath("//h1[contains(text(),'জনপ্রিয় লেখকগণ')]");
 public By previousArrow = By.xpath("//button[normalize-space()='Previous']");
 public By nextArrow = By.xpath("//button[normalize-space()='Next']");
+public By category = By.xpath("//p[normalize-space()='By Categories']");
+public By  contemporaryNovel= By.xpath("//label[contains(text(),'সমকালীন উপন্যাস')]");
+public By  EssayCollection = By.xpath("//label[@for='rok-filter-categoryIds-1321']");
+
 
     public By authorName = By.xpath("//div[@class='authorListItem slick-slide slick-active']//a//div//h2[@class='small-sized-text text-center name-text-container'][contains(text(),'হুমায়ূন আহমেদ')]");
     //button[@class='modal_modalCloseButton__y_s5N']//*[name()='svg']//*[name()='path' and contains(@fill-rule,'evenodd')]

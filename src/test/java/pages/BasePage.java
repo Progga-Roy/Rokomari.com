@@ -13,42 +13,54 @@ import java.util.List;
 
 import static utilities.DriverSetUp.getDriver;
 
-public class BasePage{
+public class BasePage {
 
-    public void loadAPage(String url){
+    public void loadAPage(String url) {
         getDriver().get(url);
     }
-    public String getCurrentUrl(){
+
+    public String getCurrentUrl() {
         return getDriver().getCurrentUrl();
     }
-    public WebElement getElement(By locator){
+
+    public WebElement getElement(By locator) {
         return getDriver().findElement(locator);
     }
-    public void maximizeScreen(){
+    public List<WebElement> getElementsFromList (By locator){
+        return getDriver().findElements(locator);
+    }
+
+    public void maximizeScreen() {
         getDriver().manage().window().maximize();
     }
-    public boolean visibilityState(By locator){
+
+    public boolean visibilityState(By locator) {
         return getElement(locator).isDisplayed();
     }
+
     public void clickOnElement(By locator) {
         getElement(locator).click();
     }
-    public void waitForElement(By locator){
-        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
+
+    public void waitForElement(By locator) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-    public void waitForClick(By locator){
-        WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(10));
+
+    public void waitForClick(By locator) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
-    public void writeOnElement(By locator ,String text){
+
+    public void writeOnElement(By locator, String text) {
         getElement(locator).sendKeys(text);
     }
-    public String getElementByText( By locator){
+
+    public String getElementByText(By locator) {
         return getElement(locator).getText();
     }
 
-//    public void closeModalIfExist(By locator){
+    //    public void closeModalIfExist(By locator){
 //        List<WebElement> elements = getDriver().findElements(locator);
 //        if(!elements.isEmpty()){
 //            WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(5));
@@ -80,51 +92,53 @@ public class BasePage{
 //    }
 //}
 //
-public void handleModalIfPresent(By... modalCloseButtons) {
-    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-    By overlay = By.xpath("//div[@class='modal_overlay__4UXSq']");
+    public void handleModalIfPresent(By... modalCloseButtons) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        By overlay = By.xpath("//div[@class='modal_overlay__4UXSq']");
 
-    for (By closeBtn : modalCloseButtons) {
-        List<WebElement> elements = getDriver().findElements(closeBtn);
+        for (By closeBtn : modalCloseButtons) {
+            List<WebElement> elements = getDriver().findElements(closeBtn);
 
-        if (!elements.isEmpty()) {
-            try {
-                WebElement modalBtn = wait.until(ExpectedConditions.elementToBeClickable(closeBtn));
+            if (!elements.isEmpty()) {
+                try {
+                    WebElement modalBtn = wait.until(ExpectedConditions.elementToBeClickable(closeBtn));
 
-                // Scroll to button if needed
-                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", modalBtn);
+                    // Scroll to button if needed
+                    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", modalBtn);
 
-                // Click using JS (bypass overlay issues)
-                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", modalBtn);
-                System.out.println("✅ Modal button clicked by JS: " + closeBtn);
+                    // Click using JS (bypass overlay issues)
+                    ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", modalBtn);
+                    System.out.println("✅ Modal button clicked by JS: " + closeBtn);
 
-                // Wait for overlay to disappear
-                List<WebElement> overlays = getDriver().findElements(overlay);
-                if (!overlays.isEmpty()) {
-                    wait.until(ExpectedConditions.invisibilityOfElementLocated(overlay));
-                    System.out.println("✅ Overlay disappeared.");
+                    // Wait for overlay to disappear
+                    List<WebElement> overlays = getDriver().findElements(overlay);
+                    if (!overlays.isEmpty()) {
+                        wait.until(ExpectedConditions.invisibilityOfElementLocated(overlay));
+                        System.out.println("✅ Overlay disappeared.");
+                    }
+
+                    return;
+                } catch (Exception e) {
+                    System.out.println("❌ Error closing modal: " + e.getMessage());
                 }
-
-                return;
-            } catch (Exception e) {
-                System.out.println("❌ Error closing modal: " + e.getMessage());
             }
         }
+
+        System.out.println("✅ No modal to close.");
     }
 
-    System.out.println("✅ No modal to close.");
-}
-
-
-
-
-    public void scrollElement(By locator){
-        WebElement element = getDriver().findElement(locator);
-        Actions action = new Actions(getDriver());
-        action.scrollToElement(element).build().perform();
-//        action.moveToElement(element).build().perform();
+    public void scrollToElement(By locator) {
+        WebElement element = getElement(locator);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block:'center'});", element);
     }
 
+//
+//    public void scrollElement(By locator){
+//        WebElement element = getDriver().findElement(locator);
+//        Actions action = new Actions(getDriver());
+//        action.scrollToElement(element).build().perform();
+////        action.moveToElement(element).build().perform();
+//    }
 
 
 }

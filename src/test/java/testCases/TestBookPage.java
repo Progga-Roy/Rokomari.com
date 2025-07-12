@@ -31,11 +31,11 @@ public class TestBookPage extends DriverSetUp {
  //Scroll the "জনপ্রিয় লেখকগণ" section
         book_page.waitForElement(book_page.authorSection);
         Assert.assertEquals(book_page.getElementByText(book_page.authorSection), book_page.authorSectionTitle);
-        WebElement section = book_page.getElement(book_page.authorSection);
-        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block:'center'})", section);
+
+        book_page.scrollToElement(book_page.authorSection);
 // Try find the Author : "হুমায়ূন আহমেদ"
         for (int i = 0; i < 10; i++) {
-            List<WebElement> authors = getDriver().findElements(book_page.authorName);
+            List<WebElement> authors = book_page.getElementsFromList(book_page.authorName);
             if (!authors.isEmpty()) {
                 authors.get(0).click();
                 System.out.println("Click Author : " + book_page.authorNameTitle);
@@ -48,43 +48,15 @@ public class TestBookPage extends DriverSetUp {
             } else {
                 break;
             }
-
+            System.out.println(" Author not found! ");
         }
+ book_page.waitForElement(book_page.category);
+  book_page.scrollToElement(book_page.category);
+        book_page.clickOnElement(book_page.contemporaryNovel);
+        book_page.clickOnElement(book_page.EssayCollection);
 
     }
 
+
 }
-
-
-//
-//
-//WebElement section = book_page.getElement(book_page.authorSection);
-//        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block:'center'});", section);
-//        Thread.sleep(1000);
-//
-/// / Step 5: Try to find and click author "হুমায়ূন আহমেদ" (within 10 scrolls)
-//        for (int i = 0; i < 10; i++) {
-//List<WebElement> authors = getDriver().findElements(book_page.authorName); // Dynamic search
-//
-//            if (!authors.isEmpty()) {
-//        authors.get(0).click();
-//                System.out.println("Clicked on author: হুমায়ূন আহমেদ");
-//                return;
-//                        }
-//
-//                        // Scroll the slider using Next arrow if author not found
-//                        book_page.waitForElement(book_page.nextArrow);
-//WebElement nextArrowBtn = book_page.getElement(book_page.nextArrow);
-//            if (nextArrowBtn.isDisplayed() && nextArrowBtn.isEnabled()) {
-//        nextArrowBtn.click();
-//                Thread.sleep(1000);
-//            } else {
-//                    break;
-//                    }
-//                    }
-//
-//                    // Step 6: If author is still not found
-//                    System.out.println("Author not found: হুমায়ূন আহমেদ");
-//
-//
 
