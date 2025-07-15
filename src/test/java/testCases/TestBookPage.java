@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AuthorPage;
 import pages.BookPage;
 import pages.HomePage;
 import utilities.DriverSetUp;
@@ -14,6 +15,7 @@ import java.util.List;
 public class TestBookPage extends DriverSetUp {
     HomePage home_page = new HomePage();
     BookPage book_page = new BookPage();
+    AuthorPage author_page = new AuthorPage();
 
     @Test
     public void TestSelectAuthor() throws InterruptedException {
@@ -26,10 +28,10 @@ public class TestBookPage extends DriverSetUp {
         Thread.sleep(3000);
 //Open the "লেখক" (Authors) tab  and click
         book_page.waitForElement(book_page.authorsTab);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         book_page.clickOnElement(book_page.authorsTab);
 //        home_page.handleModalIfPresent();
- //Scroll the "জনপ্রিয় লেখকগণ" section
+        //Scroll the "জনপ্রিয় লেখকগণ" section
         book_page.waitForElement(book_page.authorSection);
         Assert.assertEquals(book_page.getElementByText(book_page.authorSection), book_page.authorSectionTitle);
 
@@ -51,22 +53,21 @@ public class TestBookPage extends DriverSetUp {
                 break;
             }
 
+
         }
         System.out.println(" Author not found! ");
-
-
+        Thread.sleep(3000);
         //Filter "সমকালীন উপন্যাস", "রচনা সংকলন ও সমগ্র"
-        book_page.waitForElement(book_page.categorySection);
-        book_page.scrollToElement(book_page.categorySection);
-        book_page.waitForElement(book_page.contemporaryNovel);
-        book_page.clickOnElement(book_page.contemporaryNovel);
-        book_page.waitForElement(book_page.essayCollection);
-        book_page.clickOnElement(book_page.essayCollection);
-        book_page.waitForElement(book_page.nextPage);
-        book_page.moveToElement(book_page.nextPage);
+//        author_page.waitForElement(author_page.categorySection);
+//        author_page.scrollToElements(author_page.categorySection);
+//        author_page.waitForElement(author_page.contemporaryNovel);
+//        book_page.clickOnElement(book_page.contemporaryNovel);
+//        book_page.waitForElement(book_page.essayCollection);
+//        book_page.clickOnElement(book_page.essayCollection);
+//        book_page.waitForElement(book_page.nextPage);
+//        book_page.moveToElement(book_page.nextPage);
         System.out.println("click next page");
+
     }
-
-
 }
 

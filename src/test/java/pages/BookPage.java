@@ -21,9 +21,6 @@ public By authorsTab = By.xpath("//a[contains(text(),'লেখক')]");
 public By authorSection = By.xpath("//h1[contains(text(),'জনপ্রিয় লেখকগণ')]");
 public By previousArrow = By.xpath("//button[normalize-space()='Previous']");
 public By nextArrow = By.xpath("//button[normalize-space()='Next']");
-    public By categorySection = By.xpath("//p[normalize-space()='By Categories']");
-    public By contemporaryNovel = By.xpath("//label[contains(text(),'সমকালীন উপন্যাস')]");
-    public By essayCollection = By.xpath("//label[contains(text(),'উপন্যাস সমগ্র')]");
 
 public By  nextPage = By.xpath("//a[normalize-space()='2']");
 

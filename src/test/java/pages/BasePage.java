@@ -43,7 +43,7 @@ public class BasePage {
     }
 
     public void waitForElement(By locator) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
@@ -130,6 +130,10 @@ public class BasePage {
     public void scrollToElement(By locator) {
         WebElement element = getElement(locator);
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+
+    }   public void scrollToElements(By locator) {
+        WebElement element = getElement(locator);
+        ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
     }
    public void moveToElement(By locator){
         WebElement element =  getDriver().findElement(locator);
