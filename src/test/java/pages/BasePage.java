@@ -131,6 +131,13 @@ public class BasePage {
         WebElement element = getElement(locator);
         ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block:'center'});", element);
     }
+   public void moveToElement(By locator){
+        WebElement element =  getDriver().findElement(locator);
+        Actions actions = new Actions(getDriver());
+        actions.moveToElement(element,0,400);
+
+
+   }
 
 //
 //    public void scrollElement(By locator){
