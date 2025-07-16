@@ -60,6 +60,7 @@ public class BasePage {
         return getElement(locator).getText();
     }
 
+
     //    public void closeModalIfExist(By locator){
 //        List<WebElement> elements = getDriver().findElements(locator);
 //        if(!elements.isEmpty()){

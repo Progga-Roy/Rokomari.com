@@ -9,6 +9,5 @@ public class AuthorPage extends BasePage{
     public By essayCollection = By.xpath("//label[contains(text(),'উপন্যাস সমগ্র')]");
     public By pagination = By.xpath("//div[@class='pagination']");
     public By  nextPage = By.xpath("//a[normalize-space()='3']");
-//    public By  nextPage = By.xpath("//div[@class='browse-page']//a[9]");
 
 }
