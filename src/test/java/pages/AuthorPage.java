@@ -7,6 +7,8 @@ public class AuthorPage extends BasePage{
     public By categorySection = By.xpath("//p[normalize-space()='By Categories']");
     public By contemporaryNovel = By.xpath("//label[contains(text(),'সমকালীন উপন্যাস')]");
     public By essayCollection = By.xpath("//label[contains(text(),'উপন্যাস সমগ্র')]");
-    public By  nextPage = By.xpath("//a[normalize-space()='2']");
+    public By pagination = By.xpath("//div[@class='pagination']");
+    public By  nextPage = By.xpath("//a[normalize-space()='3']");
+//    public By  nextPage = By.xpath("//div[@class='browse-page']//a[9]");
 
 }

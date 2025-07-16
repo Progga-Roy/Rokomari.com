@@ -138,11 +138,11 @@ public class BasePage {
    public void moveToElement(By locator){
         WebElement element =  getDriver().findElement(locator);
         Actions actions = new Actions(getDriver());
-        actions.moveToElement(element,0,400);
-
-
+        actions.moveToElement(element);
    }
-
+   public boolean isCheckBoxSelected(By locator){
+        return getElement(locator).isSelected();
+   }
 //
 //    public void scrollElement(By locator){
 //        WebElement element = getDriver().findElement(locator);

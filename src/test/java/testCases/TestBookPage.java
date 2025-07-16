@@ -56,17 +56,6 @@ public class TestBookPage extends DriverSetUp {
 
         }
         System.out.println(" Author not found! ");
-        Thread.sleep(3000);
-        //Filter "সমকালীন উপন্যাস", "রচনা সংকলন ও সমগ্র"
-//        author_page.waitForElement(author_page.categorySection);
-//        author_page.scrollToElements(author_page.categorySection);
-//        author_page.waitForElement(author_page.contemporaryNovel);
-//        book_page.clickOnElement(book_page.contemporaryNovel);
-//        book_page.waitForElement(book_page.essayCollection);
-//        book_page.clickOnElement(book_page.essayCollection);
-//        book_page.waitForElement(book_page.nextPage);
-//        book_page.moveToElement(book_page.nextPage);
-        System.out.println("click next page");
 
     }
 }
