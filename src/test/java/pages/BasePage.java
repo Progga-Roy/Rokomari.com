@@ -144,13 +144,9 @@ public class BasePage {
    public boolean isCheckBoxSelected(By locator){
         return getElement(locator).isSelected();
    }
-//
-//    public void scrollElement(By locator){
-//        WebElement element = getDriver().findElement(locator);
-//        Actions action = new Actions(getDriver());
-//        action.scrollToElement(element).build().perform();
-////        action.moveToElement(element).build().perform();
-//    }
+public void backword(){
+        getDriver().navigate().back();
+}
 
 
 }

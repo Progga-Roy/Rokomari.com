@@ -19,6 +19,12 @@ public class CartPage extends BasePage{
     public By cashOnDeliveryRadioBtn = By.xpath("//label[@for='COD']");
     public By paymentMethod = By.xpath("//h3[normalize-space()='Payment Method']");
     public By confirmOrderBtn = By.xpath("//button[@id='js--confirm-order']");
+    public By cartQuantity = By.xpath("//span[@class='js--cart-quantity']");
+    public By cartItem = By.xpath("//img[@alt='cart']");
+    public By profile = By.xpath("//span[@class='user-name']");
+    public By signOutBtn = By.xpath("//a[@href='/logout' and contains(text(),'Sign Out')]");
+
+
 
 
 
