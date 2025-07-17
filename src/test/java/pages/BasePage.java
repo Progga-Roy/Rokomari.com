@@ -60,39 +60,6 @@ public class BasePage {
         return getElement(locator).getText();
     }
 
-
-    //    public void closeModalIfExist(By locator){
-//        List<WebElement> elements = getDriver().findElements(locator);
-//        if(!elements.isEmpty()){
-//            WebDriverWait wait = new WebDriverWait(getDriver(),Duration.ofSeconds(5));
-//            wait.until(ExpectedConditions.elementToBeClickable(locator));
-//            elements.get(0).click();
-//            System.out.println("Modal found");
-//        }
-//        else{
-//            System.out.println("Not found");
-//        }
-//    }
-//public void closeModalIfExist(By locator) {
-//    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-//    List<WebElement> elements = getDriver().findElements(locator);
-//
-//    if (!elements.isEmpty()) {
-//        try {
-//            wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
-//            System.out.println("Modal close button clicked");
-//
-//            // Wait for overlay to disappear after clicking
-//            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("modal_overlay__4UXSq")));
-//            System.out.println("Modal overlay disappeared");
-//        } catch (Exception e) {
-//            System.out.println("Error while closing modal: " + e.getMessage());
-//        }
-//    } else {
-//        System.out.println("Modal close button not found");
-//    }
-//}
-//
     public void handleModalIfPresent(By... modalCloseButtons) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         By overlay = By.xpath("//div[@class='modal_overlay__4UXSq']");
@@ -109,18 +76,17 @@ public class BasePage {
 
                     // Click using JS (bypass overlay issues)
                     ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", modalBtn);
-                    System.out.println("✅ Modal button clicked by JS: " + closeBtn);
 
                     // Wait for overlay to disappear
                     List<WebElement> overlays = getDriver().findElements(overlay);
                     if (!overlays.isEmpty()) {
                         wait.until(ExpectedConditions.invisibilityOfElementLocated(overlay));
-                        System.out.println("✅ Overlay disappeared.");
+                        System.out.println("Overlay disappeared.");
                     }
 
                     return;
                 } catch (Exception e) {
-                    System.out.println("❌ Error closing modal: " + e.getMessage());
+                    System.out.println("Error closing modal: " + e.getMessage());
                 }
             }
         }

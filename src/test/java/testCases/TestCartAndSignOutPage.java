@@ -2,15 +2,13 @@ package testCases;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.testng.asserts.Assertion;
-import org.testng.internal.thread.ThreadExecutionException;
-import pages.CartPage;
+import pages.CartAndSignOutPage;
 import utilities.DriverSetUp;
 
-public class TestCartPage extends DriverSetUp {
-    CartPage cart_page = new CartPage();
+public class TestCartAndSignOutPage extends DriverSetUp {
+    CartAndSignOutPage cart_page = new CartAndSignOutPage();
     @Test
-    public void TestCart() throws InterruptedException {
+    public void TestCartAndSignOut() throws InterruptedException {
         //Load the page
         cart_page.loadAPage(cart_page.url);
         //Move to the addToCart
