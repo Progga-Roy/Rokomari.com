@@ -18,5 +18,7 @@ public class TestSelectedBook extends DriverSetUp {
         Thread.sleep(3000);
         select_book.clickOnElement(select_book.selectedBook);
         Thread.sleep(3000);
+
+
     }
 }
