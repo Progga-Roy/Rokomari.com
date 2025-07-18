@@ -8,7 +8,6 @@ import pages.LoginPage;
 import utilities.DriverSetUp;
 
 public class TestLogin extends DriverSetUp {
-    private static final Logger log = LoggerFactory.getLogger(TestLogin.class);
     LoginPage login_page = new LoginPage();
 
     @Test
@@ -29,12 +28,12 @@ public class TestLogin extends DriverSetUp {
         login_page.waitForElement(login_page.input);
         login_page.clickOnElement(login_page.input);
         login_page.writeOnElement(login_page.input,"01830428352");
-        Thread.sleep(1000);
         login_page.clickOnElement(login_page.nextButton);
-        Thread.sleep(15000);
+        Thread.sleep(1000);
         login_page.scrollToElement(login_page.loginBtn);
+        Thread.sleep(15000);
         login_page.clickOnElement(login_page.loginBtn);
-        Assert.assertEquals(login_page.profileNamePath,login_page.profileNameText);
+        Assert.assertEquals(login_page.getElementByText(login_page.profileNamePath),login_page.profileNameText);
 
 
     }
