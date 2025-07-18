@@ -9,7 +9,7 @@ import utilities.DriverSetUp;
 public class TestAuthorPage extends DriverSetUp {
     AuthorPage author_page = new AuthorPage();
     @Test
-    public void  TestAuthorAndSelectBook() {
+    public void  TestAuthorAndSelectBook() throws InterruptedException {
         //Load the author page
         author_page.loadAPage(author_page.url);
         //Scroll down to the category section
@@ -30,10 +30,11 @@ public class TestAuthorPage extends DriverSetUp {
         author_page.clickOnElement(author_page.essayCollection);
 
         //Scroll down to the pagination
-        author_page.scrollToElements(author_page.pagination);
+        author_page.scrollToElement(author_page.pagination);
         //Click the next page
         author_page.waitForElement(author_page.nextPage);
         author_page.waitForClick(author_page.nextPage);
+        Thread.sleep(1000);
         author_page.clickOnElement(author_page.nextPage);
 
     }

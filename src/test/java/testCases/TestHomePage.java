@@ -29,6 +29,8 @@ public class TestHomePage extends DriverSetUp {
         home_page.handleModalIfPresent();
         //Navigate the book page
         home_page.waitForElement(home_page.bookPath);
+        home_page.waitForClick(home_page.bookPath);
+        Thread.sleep(10000);
         home_page.clickOnElement(home_page.bookPath);
         Thread.sleep(10000);
         Assert.assertEquals(home_page.getElementByText(home_page.bookPath),home_page.bookText);

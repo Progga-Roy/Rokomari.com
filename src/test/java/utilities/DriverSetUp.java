@@ -22,12 +22,12 @@ public class DriverSetUp {
         return DRIVER_THREAD_LOCAL.get();
     }
 
-    @BeforeMethod
+    @BeforeSuite
     public void startBrowser(){
         WebDriver driver = getBrowser(browser_name);
         setDriver(driver);
     }
-    @AfterMethod
+    @AfterSuite
     public void closeBrowser(){
         getDriver().quit();
     }

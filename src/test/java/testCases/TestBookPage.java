@@ -15,7 +15,7 @@ import java.util.List;
 public class TestBookPage extends DriverSetUp {
     HomePage home_page = new HomePage();
     BookPage book_page = new BookPage();
-    AuthorPage author_page = new AuthorPage();
+//    AuthorPage author_page = new AuthorPage();
 
     @Test
     public void TestSelectAuthor() throws InterruptedException {
@@ -29,6 +29,7 @@ public class TestBookPage extends DriverSetUp {
 //Open the "লেখক" (Authors) tab  and click
         book_page.waitForElement(book_page.authorsTab);
         Thread.sleep(3000);
+        book_page.waitForClick(book_page.authorsTab);
         book_page.clickOnElement(book_page.authorsTab);
 //        home_page.handleModalIfPresent();
         //Scroll the "জনপ্রিয় লেখকগণ" section

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/HP/IdeaProjects/Rokomari.com/src/test/java/testCases">
+        <classes>
+            <class name="testCases.TestLogin">
+                <methods>
+                    <include name="TestLoadThePaseAndGetTheTitle"/>
+                    <include name="TestSignUpWithGoogle"/>
+                </methods>
+            </class>
+            <class name="testCases.TestHomePage">
+                <methods>
+                    <include name="TestHomePageUrlAndProfileText"/>
+                    <include name="TestClickBookSection"/>
+                </methods>
+            </class>
+            <class name="testCases.TestBookPage">
+                <methods>
+                    <include name="TestSelectAuthor"/>
+                </methods>
+            </class>
+            <class name="testCases.TestAuthorPage">
+                <methods>
+                    <include name="TestAuthorAndSelectBook"/>
+                </methods>
+            </class>
+            <class name="testCases.TestSelectedBook">
+                <methods>
+                    <include name="TestSelectBook"/>
+                </methods>
+            </class>
+            <class name="testCases.TestCartAndSignOutPage">
+                <methods>
+                    <include name="TestCartAndSignOut"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+</suite>

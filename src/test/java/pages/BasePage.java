@@ -48,7 +48,7 @@ public class BasePage {
     }
 
     public void waitForClick(By locator) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
@@ -91,7 +91,7 @@ public class BasePage {
             }
         }
 
-        System.out.println("✅ No modal to close.");
+        System.out.println("No modal to close.");
     }
 
     public void scrollToElement(By locator) {
