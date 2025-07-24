@@ -10,6 +10,4 @@ public class SelectBookFromPage extends BasePage{
     public By bookSectionTitlePath = By.xpath("//h1[contains(text(),'হুমায়ূন আহমেদ এর বই সমূহ')]");
     public By selectedBook = By.xpath("//body/div[@class='browse-page']/div[@class='container-fluid custom-container px-0']/div[@class='d-flex justify-content-start align-items-start']/div[@class='main-browse-content']/section[@class='browse__content']/div[@class='browse__content-books-wrapper']/div[@class='books-wrapper row']/div[@title='নির্বাচিত ভূতের গল্প হুমায়ূন আহমেদ']/div[contains(@class,'book-list-wrapper')]/a[1]");
 
-
-
 }

@@ -11,12 +11,15 @@ public class TestCartAndSignOutPage extends DriverSetUp {
     public void TestCartAndSignOut() throws InterruptedException {
         //Load the page
         cart_page.loadAPage(cart_page.url);
+        getDriver().navigate().refresh();
+        Thread.sleep(3000);
         //Move to the addToCart
         cart_page.moveToElement(cart_page.addToCart);
         //Click addToCart button
         cart_page.waitForElement(cart_page.addToCart);
+        cart_page.moveToElement(cart_page.addToCart);
+        cart_page.waitForClick(cart_page.addToCart);
         cart_page.clickOnElement(cart_page.addToCart);
-        cart_page.waitForElement(cart_page.addToCart);
         Assert.assertEquals(cart_page.getElementByText(cart_page.addToCart),cart_page.btn);
         //Click "অর্ডার করতে এগিয়ে যান" button
         cart_page.waitForElement(cart_page.tryToOrder);
@@ -38,6 +41,7 @@ public class TestCartAndSignOutPage extends DriverSetUp {
         cart_page.clickOnElement(cart_page.city);
         //Select area
         cart_page.clickOnElement(cart_page.selectArea);
+        Thread.sleep(1000);
         cart_page.moveToElement(cart_page.area);
         cart_page.clickOnElement(cart_page.area);
         //Write address on text area
@@ -46,6 +50,7 @@ public class TestCartAndSignOutPage extends DriverSetUp {
         //Scroll down to the payment method and select method
         cart_page.waitForElement(cart_page.paymentMethod);
         cart_page.scrollToElement(cart_page.paymentMethod);
+        cart_page.waitForElement(cart_page.cashOnDeliveryRadioBtn);
         cart_page.waitForClick(cart_page.cashOnDeliveryRadioBtn);
         Thread.sleep(1000);
         cart_page.clickOnElement(cart_page.cashOnDeliveryRadioBtn);

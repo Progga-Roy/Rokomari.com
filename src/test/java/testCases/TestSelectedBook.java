@@ -2,8 +2,11 @@ package testCases;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.CartAndSignOutPage;
 import pages.SelectBookFromPage;
 import utilities.DriverSetUp;
+
+import java.util.ArrayList;
 
 public class TestSelectedBook extends DriverSetUp {
     SelectBookFromPage select_book = new SelectBookFromPage();
@@ -11,6 +14,7 @@ public class TestSelectedBook extends DriverSetUp {
     public void TestSelectBook() throws InterruptedException {
         //Load the page
         select_book.loadAPage(select_book.page_3_url);
+        select_book.handleModalIfPresent();
         //check author name and book section title
         Assert.assertEquals(select_book.getElementByText(select_book.authorNamePath), select_book.authorName);
         Assert.assertEquals(select_book.getElementByText(select_book.bookSectionTitlePath), select_book.bookSectionTitle);
@@ -21,7 +25,14 @@ public class TestSelectedBook extends DriverSetUp {
         Thread.sleep(3000);
         //Click the selected book
         select_book.clickOnElement(select_book.selectedBook);
-        Thread.sleep(3000);
+
+        //Using for closing the tab
+        ArrayList<String> tabs = new ArrayList<>(getDriver().getWindowHandles());
+        if (tabs.size() > 1) {
+            getDriver().switchTo().window(tabs.get(1));
+            getDriver().close();
+            getDriver().switchTo().window(tabs.get(0));
+        }
 
 
     }

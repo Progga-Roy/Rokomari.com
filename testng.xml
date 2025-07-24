@@ -35,7 +35,6 @@
                     <include name="TestCartAndSignOut"/>
                 </methods>
             </class>
-
         </classes>
     </test>
 </suite>

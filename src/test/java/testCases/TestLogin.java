@@ -21,7 +21,7 @@ public class TestLogin extends DriverSetUp {
     }
     @Test
     public void TestSignUpWithGoogle() throws InterruptedException {
-        //Log in with mobile number
+//        Log in with mobile number
         login_page.loadAPage(login_page.url);
         login_page.waitForElement(login_page.loginPath);
         login_page.clickOnElement(login_page.loginPath);
